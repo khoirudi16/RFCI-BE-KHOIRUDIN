@@ -4,25 +4,24 @@
     Layout = "~/Views/Shared/_LayoutPage1.cshtml";
 }
 
-<h2>Index</h2>
+<div id="title"></div>
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script>
-    function myFunction(index, datenow) {
+    function myFunction(index) {
         debugger;
         const url = 'https://localhost:44328/Simple/CreateData';
-
-        let message = '[' + datenow + '] Success: POST https://localhost:44328/ {"counter": ' + objectData[index - 1].counter + ', "X-RANDOM": "' + objectData[index - 1].header + '"}';
 
         return fetch(url, {
             method: 'post',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
                 'Content-Type': 'application/json; charset=utf-8',
+                'X-RANDOM': objectData[index - 1].header
             },
-            body: JSON.stringify({ 'message': message})
+            body: JSON.stringify({ 'counter': objectData[index - 1].counter})
         })
             .then(response => {
                 if (!response.ok) {
@@ -40,19 +39,25 @@
     let stop = 0;
     let objectData = [{ "header": "93f9h3dx", "counter": 1 }, { "header": "fe9g83jm", "counter": 2 }, { "header": "igrijd9p", "counter": 3 }];
 
+    let divid = document.querySelector('#title');
+    
+
     let i = setInterval(async function()
     {
         stop++;
-        let datenow = new Date();
 
-        await myFunction(stop, datenow);
+        await myFunction(stop);
 
         if (stop == objectData.length){
             clearInterval(i);
             alert('Check your .txt file');
+            divid.innerHTML = 'Successfully';
         }
+        
 
-     }, 5000);
+    }, 5000);
+
+    divid.innerHTML = 'Waitting for 3 Minutes, then browser will show alert';
 
 </script>
 

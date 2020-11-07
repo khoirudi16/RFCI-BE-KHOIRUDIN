@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<div id="title"></div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    function myFunction(index) {
+        debugger;
+        const url = 'https://localhost:44328/Simple/CreateData';
+
+        return fetch(url, {
+            method: 'post',
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json; charset=utf-8',
+                'X-RANDOM': objectData[index - 1].header
+            },
+            body: JSON.stringify({ 'counter': objectData[index - 1].counter})
+        })
+            .then(response => {
+                if (!response.ok) {
+                    debugger;
+                    throw new Error(response.statusText);
+                }
+                return response.json();
+            })
+            .then(response => {
+                return response;
+            });
+    }
+
+
+    let stop = 0;
+    let objectData = [{ "header": "93f9h3dx", "counter": 1 }, { "header": "fe9g83jm", "counter": 2 }, { "header": "igrijd9p", "counter": 3 }];
+
+    let divid = document.querySelector('#title');
+    
+
+    let i = setInterval(async function()
+    {
+        stop++;
+
+        await myFunction(stop);
+
+        if (stop == objectData.length){
+            clearInterval(i);
+            alert('Check your .txt file');
+            divid.innerHTML = 'Successfully';
+        }
+        
+
+    }, 60000);
+
+    divid.innerHTML = 'Waitting for 3 Minutes, then browser will show alert';
+
+</script>
+
