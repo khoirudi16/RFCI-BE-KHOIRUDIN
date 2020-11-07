@@ -1,0 +1,7 @@
+D:\Learning\Csharp\Sorting\Sorting\Sorting\bin\Debug\Sorting.exe.config
+D:\Learning\Csharp\Sorting\Sorting\Sorting\bin\Debug\Sorting.exe
+D:\Learning\Csharp\Sorting\Sorting\Sorting\bin\Debug\Sorting.pdb
+D:\Learning\Csharp\Sorting\Sorting\Sorting\obj\Debug\Sorting.csprojAssemblyReference.cache
+D:\Learning\Csharp\Sorting\Sorting\Sorting\obj\Debug\Sorting.csproj.CoreCompileInputs.cache
+D:\Learning\Csharp\Sorting\Sorting\Sorting\obj\Debug\Sorting.exe
+D:\Learning\Csharp\Sorting\Sorting\Sorting\obj\Debug\Sorting.pdb
